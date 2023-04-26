@@ -1,11 +1,11 @@
-# Decoding & Encoding `monero_subscription:` Payment Strings
+# Decoding & Encoding `monero_subscription:` Payment Codes
 
-This document explains how to decode and encode `monero_subscription:` payment strings using gzip compression and Base64 encoding.
+This document explains how to decode and encode `monero_subscription:` payment codes using gzip compression and Base64 encoding.
 
-## Decoding Monero Subscription Payment Strings
-To decode a Monero subscription payment string, follow these steps:
+## Decoding Monero Subscription Payment Codes
+To decode a Monero subscription payment code, follow these steps:
 
-1. Remove the prefix: `monero_subscription:`
+1. Remove the Monero Subscription identifier: `monero_subscription:`
 1. Decode the string from Base64 to obtain the compressed data.
 2. Decompress the compressed data using gzip to get the JSON string.
 3. Parse the JSON string to extract the field values.
@@ -51,8 +51,8 @@ decoded_data = decode_monero_subscription_code(monero_subscription_code)
 print(decoded_data)
 ```
 
-## Encoding Monero Subscription Payment Strings
-To encode a Monero subscription payment string, follow these steps:
+## Encoding Monero Subscription Payment Codes
+To encode a Monero subscription payment code, follow these steps:
 
 1. Convert the payment details to a JSON object.
 2. Compress the JSON object using gzip compression.
