@@ -5,21 +5,22 @@ This document explains how to decode and encode Monero subscription payment stri
 ## Decoding Monero Subscription Payment Strings
 To decode a Monero subscription payment string, follow these steps:
 
-1. Remove the prefix: `MONERO_SUBSCRIPTION::::`
+1. Remove the prefix: `monero_subscription:`
 1. Decode the string from Base64 to obtain the compressed data.
 2. Decompress the compressed data using gzip to get the JSON string.
 3. Parse the JSON string to extract the field values.
 
-## Function To Decode Monero Subscription Information
+## Example Function To Decode Monero Subscription Code
 
 ```
 import base64
 import gzip
 import json
 
+
 def decode_monero_subscription_code(monero_subscription_code):
-    # Catches user error. Code can start with "MONERO_SUBSCRIPTION::::", "::::", or ""
-    code_parts = monero_subscription_code.split('::::')
+    # Catches user error. Code can start with "monero_subscription:", or ""
+    code_parts = monero_subscription_code.split('_subscription:')
     if len(code_parts) == 2:
         monero_subscription_data = code_parts[1]
     else:
@@ -34,10 +35,10 @@ def decode_monero_subscription_code(monero_subscription_code):
     json_str = json_bytes.decode('utf-8')
     # Parse the JSON string into a Python object
     subscription_data_as_json = json.loads(json_str)
-    #print(subscription_data_as_json)
     return subscription_data_as_json
 
-monero_subscription_code = 'MONERO_SUBSCRIPTION::::H4sIAAABiVYC/x1Sx67DQBiEX4VwbQ3lZPAAZQFQWcaKfZumXblJu7p3q3esq5K5sf5J5e/7pvlq/bFWZkU/q8heKYXfgiU6KQ2/LGw75zcPSBvUsOja7TIS39iZjWlI8r2rY0FmSMdKxuWg8zddv1s23/NnJxcZ/HnmrWttGvM9rJy/e6/hjlvdszW8p+bo1Ja09vc3p3q3euqB8mr9vx9XUHUN6VqM3bJcxdVevj+63RJgYuL0/z/kHj7VZorElK49Xh6U5O6OyKjQr1D8h1VzvxwAAAP//ks/vAgAA'
+
+monero_subscription_code = 'monero_subscription:H4sIAGOfSWQC/x2O206DQBBAf4XwbBvKzeAbtKCxqYnQCvpCdpexoAtL9lK7a/x32b7NnDnJmV+XKCHZ2FKEgboPjtscSqdS2KkRpSCdHVzW7p3jClhWLtqfG7ZimMqgifjlTc9H9nkeFbwkInmV3HQlRJmCgovv9GPY3GfsHfdGC2YMOxRZbOrpuO8et3F6zVOc5xExRRn0y/SMxRj2W2j8ykaJ4hwmom3uVO0sQiNTk+1vknWSLGBGeoRJtkNnra+m8b35SKo623dPp+vtdYm4bDskwRq+5wcrL1z5sb3hgdJhOrdEEwqLo8XiBN7fP3qScGsYAQAA'
 
 decode_monero_subscription_code(monero_subscription_code)
 ```
@@ -48,50 +49,36 @@ To encode a Monero subscription payment string, follow these steps:
 1. Convert the payment details to a JSON object.
 2. Compress the JSON object using gzip compression.
 3. Encode the compressed data in Base64 format.
-4. Add the Monero Subscription identifier `MONERO_SUBSCRIPTION::::` to the encoded string.
+4. Add the Monero Subscription identifier `monero_subscription:` to the encoded string.
 
-## Example Code
 
-```python
-# Decoding a Monero Subscription Payment String
+## Example Function To Create A Monero Subscription Code
+
+```
 import base64
 import gzip
 import json
 
-monero_subscription = 'MONERO_SUBSCRIPTION::::H4sIAAABiVYC/x1Sx67DQBiEX4VwbQ3lZPAAZQFQWcaKfZumXblJu7p3q3esq5K5sf5J5e/7pvlq/bFWZkU/q8heKYXfgiU6KQ2/LGw75zcPSBvUsOja7TIS39iZjWlI8r2rY0FmSMdKxuWg8zddv1s23/NnJxcZ/HnmrWttGvM9rJy/e6/hjlvdszW8p+bo1Ja09vc3p3q3euqB8mr9vx9XUHUN6VqM3bJcxdVevj+63RJgYuL0/z/kHj7VZorElK49Xh6U5O6OyKjQr1D8h1VzvxwAAAP//ks/vAgAA'
+json_data = {
+     "custom_label": "My Subscription",  # This can be any text
+     "sellers_wallet": "4At3X5rvVypTofgmueN9s9QtrzdRe5BueFrskAZi17BoYbhzysozzoMFB6zWnTKdGC6AxEAbEE5czFR3hbEEJbsm4hCeX2S",
+     "currency": "USD",                  # Currently supports "USD" or "XMR"
+     "amount": 19.99,                    
+     "payment_id": "EyRTrKDsbkH6GwdL",   # Unique identifier so the merchant knows which customer the payment relates to
+     "start_date": "2023-04-26",         # If you want it to start the day of, you can use: datetime.now().strftime("%Y-%m-%d")
+     "billing_cycle_days": 30            # How often it should be billed
+     }
 
-# Decode the string from Base64 format to get the compressed data.
-compressed_data = base64.b64decode(monero_subscription[len('MONERO_SUBSCRIPTION::::'):])
+def make_subscription_code(json_data):
+    # Convert the JSON data to a string
+    json_str = json.dumps(json_data)
+    # Compress the string using gzip compression
+    compressed_data = gzip.compress(json_str.encode('utf-8'))
+    # Encode the compressed data into a Base64-encoded string
+    encoded_str = base64.b64encode(compressed_data).decode('ascii')
+    # Add the Monero Subscription identifier
+    monero_subscription = 'monero_subscription:' + encoded_str
+    return monero_subscription
 
-# Decompress the compressed data using gzip to get the JSON string.
-json_str = gzip.decompress(compressed_data).decode('utf-8')
+```
 
-# Parse the JSON string to extract the field values.
-payment_data = json.loads(json_str)
-
-print(payment_data)
-
-# Encoding a Monero Subscription Payment String
-payment_data = {
-    "custom_label": "Developer Donation",
-    "sellers_wallet": "4At3X5rvVypTofgmueN9s9QtrzdRe5BueFrskAZi17BoYbhzysozzoMFB6zWnTKdGC6AxEAbEE5czFR3hbEEJbsm4hCeX2S",
-    "currency": "USD",
-    "namount": 19.99,
-    "payment_id": "EyRTrKDsbkH6GwdL",
-    "start_date": "2023-04-25",
-    "billing_cycle_days": 30
-}
-
-# Convert the payment details to a JSON object.
-json_str = json.dumps(payment_data)
-
-# Compress the JSON object using gzip compression.
-compressed_data = gzip.compress(json_str.encode('utf-8'))
-
-# Encode the compressed data in Base64 format.
-encoded_str = base64.b64encode(compressed_data).decode('ascii')
-
-# Add the Monero Subscription identifier to the encoded string.
-monero_subscription = 'MONERO_SUBSCRIPTION::::' + encoded_str
-
-print(monero_subscription)
