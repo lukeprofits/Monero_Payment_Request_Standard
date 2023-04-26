@@ -1,4 +1,4 @@
-# Decoding & Encoding Monero Subscription Payment Strings
+# Decoding & Encoding `monero_subscription:` Payment Strings
 
 This document explains how to decode and encode Monero subscription payment strings using gzip compression and Base64 encoding.
 
