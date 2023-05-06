@@ -89,7 +89,7 @@ json_data = {
      "sellers_wallet": "4At3X5rvVypTofgmueN9s9QtrzdRe5BueFrskAZi17BoYbhzysozzoMFB6zWnTKdGC6AxEAbEE5czFR3hbEEJbsm4hCeX2S",
      "currency": "USD",                  # Currently supports "USD" or "XMR"
      "amount": 19.99,                    
-     "payment_id": "EyRTrKDsbkH6GwdL",   # Unique identifier so the merchant knows which customer the payment relates to
+     "payment_id": "9fc88080d1d5dc09",   # Unique identifier so the merchant knows which customer the payment relates to
      "start_date": "2023-04-26",         # If you want it to start the day of, you can use: datetime.now().strftime("%Y-%m-%d")
      "billing_cycle_days": 30            # How often it should be billed
      }
