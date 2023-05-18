@@ -100,3 +100,5 @@ print(monero_subscription_code)
 
 ```
 
+# Tools For Creating `monero-subscription` codes
+[Monero Subscription Code Creator](https://github.com/lukeprofits/Monero_Subscription_Code_Creator)
