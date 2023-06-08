@@ -100,5 +100,8 @@ print(monero_subscription_code)
 
 ```
 
-# Tools For Creating `monero-subscription` codes
-[Monero Subscription Code Creator](https://github.com/lukeprofits/Monero_Subscription_Code_Creator)
+# Tools For Creating `monero-subscription` codes:
+* Recommended: [Monero Subscription Code Creator Website](https://monerosub.tux.pizza/)
+* [Monero Subscription Code Creator CLI Tool](https://github.com/lukeprofits/Monero_Subscription_Code_Creator)
+* [MoneroSub Subscription Code Creator Pip Package](https://github.com/lukeprofits/monerosub)
+* More monero-subscription integration tools coming soon...
