@@ -1,3 +1,5 @@
+## Monero Payment Request Standard (Formerly Monero Subscription Code Standard)
+
 # Decoding & Encoding `monero-subscription:` Payment Codes
 
 This document explains how to decode and encode `monero-subscription:` payment codes using gzip compression and Base64 encoding.
