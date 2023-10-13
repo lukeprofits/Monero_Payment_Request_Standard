@@ -1,4 +1,5 @@
 # Monero Payment Request Standard
+> :warning: Formerly the [Monero Subscription Code Standard](https://github.com/lukeprofits/Monero_Subscription_Code_Standard)
 
 ## Decoding & Encoding `monero-request:` Payment Codes
 
