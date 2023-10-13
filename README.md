@@ -1,4 +1,4 @@
-# Monero Payment Request Standard (Formerly Monero Subscription Code Standard)
+# Monero Payment Request Standard
 
 ## Decoding & Encoding `monero-request:` Payment Codes
 
