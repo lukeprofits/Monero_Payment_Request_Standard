@@ -1,17 +1,19 @@
 # Monero Payment Request Standard
 > Formerly the [Monero Subscription Code Standard](https://github.com/lukeprofits/Monero_Subscription_Code_Standard)
 
+# Version 1
 ## Decoding & Encoding `monero-request:` Payment Codes
 
 This document explains how to decode and encode `monero-request:` payment codes using gzip compression and Base64 encoding.
 
-## Decoding Monero Subscription Payment Codes
-To decode a Monero subscription payment code, follow these steps:
+## Decoding Monero Payment Requests
+To decode a Monero Payment Request, follow these steps:
 
-1. Remove the Monero Subscription identifier: `monero-request:`
-1. Decode the string from Base64 to obtain the compressed data.
-2. Decompress the compressed data using gzip to get the JSON string.
-3. Parse the JSON string to extract the field values.
+1. Remove the Monero Payment Request identifier: `monero-request:`
+2. Remove the version identifier `1:`
+3. Decode the string from Base64 to obtain the compressed data.
+4. Decompress the compressed data using gzip to get the JSON string.
+5. Parse the JSON string to extract the field values.
 
 ## Example Function To Decode Monero Subscription Code
 
