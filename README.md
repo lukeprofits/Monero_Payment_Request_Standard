@@ -1,13 +1,13 @@
 # Monero Payment Request Standard (Formerly Monero Subscription Code Standard)
 
-## Decoding & Encoding `monero-subscription:` Payment Codes
+## Decoding & Encoding `monero-request:` Payment Codes
 
-This document explains how to decode and encode `monero-subscription:` payment codes using gzip compression and Base64 encoding.
+This document explains how to decode and encode `monero-request:` payment codes using gzip compression and Base64 encoding.
 
 ## Decoding Monero Subscription Payment Codes
 To decode a Monero subscription payment code, follow these steps:
 
-1. Remove the Monero Subscription identifier: `monero-subscription:`
+1. Remove the Monero Subscription identifier: `monero-request:`
 1. Decode the string from Base64 to obtain the compressed data.
 2. Decompress the compressed data using gzip to get the JSON string.
 3. Parse the JSON string to extract the field values.
@@ -21,7 +21,7 @@ import json
 
 
 def decode_monero_subscription_code(monero_subscription_code):
-    # Catches user error. Code can start with "monero-subscription:", or ""
+    # Catches user error. Code can start with "monero-request:", or ""
     code_parts = monero_subscription_code.split('-subscription:')
     if len(code_parts) == 2:
         monero_subscription_data = code_parts[1]
@@ -46,7 +46,7 @@ def decode_monero_subscription_code(monero_subscription_code):
     return subscription_data_as_json
 
 
-monero_subscription_code = 'monero-subscription:H4sIAGOfSWQC/x2O206DQBBAf4XwbBvKzeAbtKCxqYnQCvpCdpexoAtL9lK7a/x32b7NnDnJmV+XKCHZ2FKEgboPjtscSqdS2KkRpSCdHVzW7p3jClhWLtqfG7ZimMqgifjlTc9H9nkeFbwkInmV3HQlRJmCgovv9GPY3GfsHfdGC2YMOxRZbOrpuO8et3F6zVOc5xExRRn0y/SMxRj2W2j8ykaJ4hwmom3uVO0sQiNTk+1vknWSLGBGeoRJtkNnra+m8b35SKo623dPp+vtdYm4bDskwRq+5wcrL1z5sb3hgdJhOrdEEwqLo8XiBN7fP3qScGsYAQAA'
+monero_subscription_code = 'monero-request:H4sIAGOfSWQC/x2O206DQBBAf4XwbBvKzeAbtKCxqYnQCvpCdpexoAtL9lK7a/x32b7NnDnJmV+XKCHZ2FKEgboPjtscSqdS2KkRpSCdHVzW7p3jClhWLtqfG7ZimMqgifjlTc9H9nkeFbwkInmV3HQlRJmCgovv9GPY3GfsHfdGC2YMOxRZbOrpuO8et3F6zVOc5xExRRn0y/SMxRj2W2j8ykaJ4hwmom3uVO0sQiNTk+1vknWSLGBGeoRJtkNnra+m8b35SKo623dPp+vtdYm4bDskwRq+5wcrL1z5sb3hgdJhOrdEEwqLo8XiBN7fP3qScGsYAQAA'
 
 decoded_data = decode_monero_subscription_code(monero_subscription_code)
 
@@ -59,7 +59,7 @@ To encode a Monero subscription payment code, follow these steps:
 1. Convert the payment details to a JSON object.
 2. Compress the JSON object using gzip compression.
 3. Encode the compressed data in Base64 format.
-4. Add the Monero Subscription identifier `monero-subscription:` to the encoded string.
+4. Add the Monero Subscription identifier `monero-request:` to the encoded string.
 
 
 ## Example Function To Create A Monero Subscription Code
@@ -81,7 +81,7 @@ def make_monero_subscription_code(json_data):
     encoded_str = base64.b64encode(compressed_data).decode('ascii')
     
     # Add the Monero Subscription identifier
-    monero_subscription = 'monero-subscription:' + encoded_str
+    monero_subscription = 'monero-request:' + encoded_str
     
     return monero_subscription
     
@@ -102,8 +102,8 @@ print(monero_subscription_code)
 
 ```
 
-# Tools For Creating `monero-subscription` codes:
+# Tools For Creating `monero-request` codes:
 * Recommended: [Monero Subscription Code Creator Website](https://monerosub.tux.pizza/)
 * [Monero Subscription Code Creator CLI Tool](https://github.com/lukeprofits/Monero_Subscription_Code_Creator)
 * [MoneroSub Subscription Code Creator Pip Package](https://github.com/lukeprofits/monerosub)
-* More monero-subscription integration tools coming soon...
+* More monero-request integration tools coming soon...
