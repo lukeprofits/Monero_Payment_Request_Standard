@@ -177,7 +177,7 @@ The `custom_label` is a string field allowing users to attach a descriptive labe
 ### Sellers Wallet
 The `sellers_wallet` field holds the Monero wallet address where payments will be sent. This address must not be a subaddress since integrated addresses (which combine a Monero address and a payment ID) don't support subaddresses.
 
-- **Data Type**: String (Monero wallet address format)
+- **Data Type**: String *(Monero wallet address format)*
 - **Limitations**: Must be a valid main Monero wallet address.
 - **Examples**: 
     - "4At3X5rvVypTofgmueN9s9QtrzdRe5BueFrskAZi17BoYbhzysozzoMFB6zWnTKdGC6AxEAbEE5czFR3hbEEJbsm4hCeX2S"
@@ -211,7 +211,7 @@ The `payment_id` is a unique identifier generated for the payment request. It is
 ### Start Date
 The `start_date` field indicates when the first payment or subscription should commence.
 
-- **Data Type**: DateTime (RFC3339 timestamp format)
+- **Data Type**: String *(RFC3339 timestamp format)*
 - **Python Example**: 
     ```python
     from datetime import datetime
