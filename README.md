@@ -244,13 +244,6 @@ The `number_of_payments` field indicates how many times a payment will occur.
 ### Change Indicator URL
 The `change_indicator_url` is a field designed for large merchants who wish to have the flexibility to request modifications to an existing payment request. **It's important to note that the merchant cannot enforce these changes.** When a change is requested, all related automatic payments are paused until the customer reviews and either confirms or rejects the changes (canceling the payment request).
 
-- **Data Type**: String
-- **Examples**:
-    - "" *(for small merchants who do not want to use this feature)*
-    - "www.example.com/api/monero-request"
-    - "www.mywebsite.com/update-monero-payments"
-
-
 #### Key Features and Constraints
 
 - **Merchant Requests, Not Commands**: The main utility of this feature is for merchants to request changes, such as updating a wallet address or changing the price. The merchant cannot force these changes on the customer.
@@ -309,6 +302,11 @@ Merchants can ignore the `payment_id` query parameter to initiate blanket update
 
 This optional `change_indicator_url` feature enhances the protocol's flexibility, enabling merchants to request changes while ensuring customers maintain full control over their payment options.
 
+- **Data Type**: String
+- **Examples**:
+    - "" *(for small merchants who do not want to use this feature)*
+    - "www.example.com/api/monero-request"
+    - "www.mywebsite.com/update-monero-payments"
 
 ## Old Versions
 [Version 0](https://github.com/lukeprofits/Monero_Payment_Request_Standard/blob/main/versions/v0.md)
