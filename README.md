@@ -108,8 +108,9 @@ The `change_indicator_url` is an optional field designed for merchants who wish 
 
 #### How it Works
 
-1. **URL Formation**: The `change_indicator_url` is constructed by appending the unique `payment_id` to a base URL specified by the merchant.
-    - Example: `www.mysite.com/api/monero-request?payment_id=9fc88080d1d5dc09`
+1. **URL Formation**: For the `change_indicator_url`, provide only the base URL of the endpoint that should be notified upon payment status changes. The system will automatically append the unique `payment_id` associated with the payment request as a query parameter to this URL.
+    - Base URL you provide: `www.mysite.com/api/monero-request`
+    - Final URL used by the system: `www.mysite.com/api/monero-request?payment_id=9fc88080d1d5dc09`
 
 2. **Merchant Changes**: To request a change, the merchant updates the information at the `change_indicator_url`. These changes remain in the status of "requested" until approved or declined by the customer.
 
