@@ -4,10 +4,10 @@
 ## Introduction
 The Monero Payment Request Standard aims to address the complexities and limitations associated with traditional and existing cryptographic payment methods. It facilitates a straightforward and decentralized way to handle both one-time and recurring Monero payments.
 
-## Operational Mechanism
+## How It Works
 
 ### For Merchants
-1. **Generate A Code**: Create a unique payment code (called a "Payment Request") encapsulating the payment information — billing frequency, amount, etc.
+1. **Generate A Code**: Create a unique payment code (called a "[Payment Request](##Decoding & Encoding Monero Payment Requests)") encapsulating the payment information — billing frequency, amount, etc.
 2. **Modification Requests**: Merchants can request to update previously sent Payment Requests, accommodating changing business needs. The customer retains the ability to accept these changes, or remove the Payment Request.
 
 ### For Consumers
