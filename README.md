@@ -168,7 +168,7 @@ Merchants can ignore the `payment_id` query parameter to initiate blanket update
 This optional `change_indicator_url` feature enhances the protocol's flexibility, enabling merchants to request changes while ensuring customers maintain full control over their payment options.
 
 
-# Tools For Creating `monero-request` codes
+# Tools For Creating `monero-request` codes (these will be updated soon)
 
 - [Monero Payment Request Code Creator Website](https://monerosub.tux.pizza/)
 - [Monero Payment Request Code Creator CLI Tool](https://github.com/lukeprofits/Monero_Payment_Request_Code_Creator)
