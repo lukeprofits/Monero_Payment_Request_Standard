@@ -36,10 +36,20 @@ The following explains how to decode and encode `monero-request:` payment reques
 ## Decoding A Monero Payment Request
 To decode a Monero Payment Request, follow these steps:
 
-1. Remove the Monero Payment Request identifier: `monero-request:` and version identifier `1:`.
-2. Decode the string from Base64 to obtain the compressed data.
-3. Decompress the compressed data using gzip to get the JSON string.
+1. Remove the Monero Payment Request identifier `monero-request:` and version identifier, and extract the encoded string.
+   - Python: `prefix, version, encoded_str = monero_payment_request.split(':')`
+   - JavaScript: `const [prefix, version, encoded_str] = monero_payment_request.split(':');`
+2. Decode the string from [Base64](https://en.wikipedia.org/wiki/Base64) to obtain the compressed data.
+   - Python: `compressed_data = base64.b64decode(encoded_str)`
+   - JavaScript: `const compressed_data = atob(encoded_str)`
+3. Decompress the compressed data using [gzip](https://docs.python.org/3/library/gzip.html) to get the JSON string.
+   - Python: `json_str = gzip.decompress(compressed_data)`
+   - JavaScript: `const json_str = pako.inflate(compressed_data, { to: 'string' })` *(using [pako library](https://github.com/nodeca/pako))*
 4. Parse the JSON string to extract the field values.
+   - Python: `json.loads(json_str)`
+   - JavaScript: `JSON.parse(json_str)`
+
+
 
 ### Example Python Function To Decode A Monero Payment Request:
 ```
