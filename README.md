@@ -165,28 +165,81 @@ print(monero_payment_request)
 
 ## Field Explanations
 ### Custom Label
-(text here)
+The `custom_label` is a string field allowing users to attach a descriptive label to the payment request. This label can be any text that helps identify or categorize the payment for the user.
+
+- **Data Type**: String
+- **Details**: While there's no strict character limit, labels longer than 80 characters are likely to be truncated in most interfaces.
+- **Examples**: 
+    - "Monthly Subscription"
+    - "Donation to XYZ"
+    - "Invoice #12345"
 
 ### Sellers Wallet
-(text here)
+The `sellers_wallet` field holds the Monero wallet address where payments will be sent. This address must not be a subaddress since integrated addresses (which combine a Monero address and a payment ID) don't support subaddresses.
+
+- **Data Type**: String (Monero wallet address format)
+- **Limitations**: Must be a valid main Monero wallet address.
+- **Examples**: 
+    - "4At3X5rvVypTofgmueN9s9QtrzdRe5BueFrskAZi17BoYbhzysozzoMFB6zWnTKdGC6AxEAbEE5czFR3hbEEJbsm4hCeX2S"
 
 ### Currency
-(text here)
+All payments are made in Monero. The `currency` field is used to specify the currency in which the payment amount is denominated. This allows merchants to base their prices on a variety of currencies.
+
+- **Data Type**: String
+- **Details**: While payments are always in Monero, the amount can be specified in any recognized currency or cryptocurrency ticker (e.g., USD, AUD, GBP, BTC). The exact amount of Monero sent will be based on the current exchange rate of the specified currency to Monero.
+- **Examples**: 
+    - "USD"
+    - "GBP"
+    - "XMR"
 
 ### Amount
-(text here)
+The `amount` field specifies the quantity of the specified currency to be transferred. The actual Monero amount sent will be based on this value and the current exchange rate.
+
+- **Data Type**: Float
+- **Examples**: 
+    - 19.99 (for 19.99 USD worth of Monero)
+    - 0.5 (for 0.5 XMR)
 
 ### Payment ID
-(text here)
+The `payment_id` is a unique identifier generated for the payment request. It is used when generating an integrated address for Monero payments. Merchants can identify which customer made a payment based on this ID, ensuring privacy for the customer.
+
+- **Data Type**: String (Monero payment ID format)
+- **Details**: Typically in hexadecimal format, it's recommended to generate a unique ID for each customer.
+- **Examples**: 
+    - "9fc88080d1d5dc09"
 
 ### Start Date
-(text here)
+The `start_date` field indicates when the first payment or subscription should commence.
+
+- **Data Type**: DateTime (RFC3339 timestamp format)
+- **Python Example**: 
+    ```python
+    from datetime import datetime
+    current_time = datetime.now().isoformat(timespec='milliseconds')
+    ```
+- **JavaScript Example**:
+    ```javascript
+    const current_time = new Date().toISOString();
+    ```
+- **Examples**: 
+    - "2023-04-26T13:45:33.123Z"
 
 ### Days Per Billing Cycle
-(text here)
+The `days_per_billing_cycle` field defines the frequency of payments for recurring payments.
+
+- **Data Type**: Integer
+- **Examples**: 
+    - 30 (for monthly payments)
+    - 7 (for weekly payments)
 
 ### Number of Payments
-(text here)
+The `number_of_payments` field indicates how many times a payment will occur.
+
+- **Data Type**: Integer
+- **Examples**: 
+    - 1 (for a one-time payment)
+    - 6 (for six scheduled payments)
+    - 0 (for payments that will recur until canceled)
 
 ### Change Indicator URL
 The `change_indicator_url` is an optional field designed for merchants who wish to have the flexibility to request modifications to an existing payment request. **It's important to note that the merchant cannot enforce these changes.** When a change is requested, all related automatic payments are paused until the customer reviews and either confirms or rejects the changes (canceling the payment request).
