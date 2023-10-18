@@ -242,12 +242,14 @@ The `number_of_payments` field indicates how many times a payment will occur.
     - 0 *(for payments that will recur until canceled)*
 
 ### Change Indicator URL
-The `change_indicator_url` is an optional field designed for merchants who wish to have the flexibility to request modifications to an existing payment request. **It's important to note that the merchant cannot enforce these changes.** When a change is requested, all related automatic payments are paused until the customer reviews and either confirms or rejects the changes (canceling the payment request).
+The `change_indicator_url` is a field designed for large merchants who wish to have the flexibility to request modifications to an existing payment request. **It's important to note that the merchant cannot enforce these changes.** When a change is requested, all related automatic payments are paused until the customer reviews and either confirms or rejects the changes (canceling the payment request).
 
 - **Data Type**: String
-- **Examples**: 
+- **Examples**:
+    - "" *(for small merchants who do not want to use this feature)*
     - "www.example.com/api/monero-request"
     - "www.mywebsite.com/update-monero-payments"
+
 
 #### Key Features and Constraints
 
