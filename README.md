@@ -1,11 +1,33 @@
 # Monero Payment Request Standard
 > Formerly known as the [Monero Subscription Code Standard](https://github.com/lukeprofits/Monero_Subscription_Code_Standard)
 
+## Table of Contents
+1. [Introduction](#introduction)
+2. [How It Works](#how-it-works)
+    1. [For Merchants](#for-merchants)
+    2. [For Consumers](#for-consumers)
+3. [Advantages](#advantages)
+4. [Mission](#mission)
+5. [Tools For Creating `monero-request` codes](#tools-for-creating-monero-request-codes)
+6. [Latest Version](#latest-version)
+    1. [Decoding A Monero Payment Request](#decoding-a-monero-payment-request)
+    2. [Encoding A Monero Payment Request](#encoding-a-monero-payment-request)
+7. [Field Explanations](#field-explanations)
+    1. [Custom Label](#custom-label)
+    2. [Sellers Wallet](#sellers-wallet)
+    3. [Currency](#currency)
+    4. [Amount](#amount)
+    5. [Payment ID](#payment-id)
+    6. [Start Date](#start-date)
+    7. [Days Per Billing Cycle](#days-per-billing-cycle)
+    8. [Number of Payments](#number-of-payments)
+    9. [Change Indicator URL](#change-indicator-url)
+8. [Old Versions](#old-versions)
+
 ## Introduction
 The Monero Payment Request Standard aims to address the complexities and limitations associated with traditional and existing cryptographic payment methods. It facilitates a straightforward and decentralized way to handle both one-time and recurring Monero payments.
 
 ## How It Works
-
 ### For Merchants
 1. **Generate A Code**: Create a unique payment code (called a "Payment Request") encapsulating the payment information — billing frequency, amount, etc.
 2. **Modification Requests**: Merchants can request to update previously sent Payment Requests, accommodating changing business needs. The customer retains the ability to accept these changes, or remove the Payment Request.
@@ -15,7 +37,6 @@ The Monero Payment Request Standard aims to address the complexities and limitat
 2. **Retain Control**: Upon confirmation, the payment proceeds according to the agreed-upon schedule. Buyers retain full control over their funds and can cancel Payment Requests at any time.
 
 ## Advantages
-
 - **Efficiency**: The protocol eliminates redundant steps, enabling users to establish payment conditions with a singular code.
 - **No Intermediaries**: The protocol operates without the need for a middle man, enabling a direct transactional relationship between the buyer and merchant.
 - **Multi-Currency Flexibility**: The protocol supports pricing in various currencies, providing flexibility for merchants whose pricing may be based on fiat currencies.
@@ -24,16 +45,16 @@ The Monero Payment Request Standard aims to address the complexities and limitat
 ## Mission
 To simplify all kinds of payments on Monero, allowing buyers to retain full control of funds, automate payments, and keep transactions private.
 
-# Tools For Creating `monero-request` codes 
+## Tools For Creating `monero-request` codes
 - [Monero Payment Request Code Creator Website](https://monerosub.tux.pizza/)
 - [Monero Payment Request Code Creator CLI Tool](https://github.com/lukeprofits/Monero_Payment_Request_Code_Creator)
 - [Monero Payment Request Code Creator Pip Package](https://github.com/lukeprofits/monero_payment_request)
 - More `monero-request` integration tools coming soon...
 
-# Latest Version: [Version 1](https://github.com/lukeprofits/Monero_Payment_Request_Standard/blob/main/versions/v1.md)
-The following explains how to decode and encode `monero-request:` payment requests using gzip compression and Base64 encoding.
+## Latest Version
+[Version 1](https://github.com/lukeprofits/Monero_Payment_Request_Standard/blob/main/versions/v1.md)
 
-## Decoding A Monero Payment Request
+### Decoding A Monero Payment Request
 To decode a Monero Payment Request, follow these steps:
 
 1. Remove the Monero Payment Request identifier `monero-request:` and version identifier, and extract the encoded string.
@@ -83,8 +104,7 @@ decoded_data = decode_monero_payment_request(monero_payment_request)
 print(decoded_data)
 ```
 
-
-## Encoding A Monero Payment Request
+### Encoding A Monero Payment Request
 To encode a Monero Payment Request, follow these steps:
 
 1. Convert the payment details to a JSON object. Minimize whitespace and sort the keys.
@@ -143,8 +163,32 @@ monero_payment_request = make_monero_payment_request(json_data=json_data)
 print(monero_payment_request)
 ```
 
+## Field Explanations
+### Custom Label
+(text here)
 
-## Using the Optional `change_indicator_url`
+### Sellers Wallet
+(text here)
+
+### Currency
+(text here)
+
+### Amount
+(text here)
+
+### Payment ID
+(text here)
+
+### Start Date
+(text here)
+
+### Days Per Billing Cycle
+(text here)
+
+### Number of Payments
+(text here)
+
+### Change Indicator URL
 The `change_indicator_url` is an optional field designed for merchants who wish to have the flexibility to request modifications to an existing payment request. **It's important to note that the merchant cannot enforce these changes.** When a change is requested, all related automatic payments are paused until the customer reviews and either confirms or rejects the changes.
 
 #### Key Features and Constraints
@@ -206,5 +250,5 @@ Merchants can ignore the `payment_id` query parameter to initiate blanket update
 This optional `change_indicator_url` feature enhances the protocol's flexibility, enabling merchants to request changes while ensuring customers maintain full control over their payment options.
 
 
-# Old Versions: 
+## Old Versions
 [Version 0](https://github.com/lukeprofits/Monero_Payment_Request_Standard/blob/main/versions/v0.md)
