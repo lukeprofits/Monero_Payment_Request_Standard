@@ -14,7 +14,7 @@ To decode a Monero Payment Request, follow these steps:
 4. Decompress the compressed data using gzip to get the JSON string.
 5. Parse the JSON string to extract the field values.
 
-## Example Python Function To Decode A Monero Payment Request
+### Example Python Function To Decode A Monero Payment Request
 ```
 import base64
 import gzip
@@ -46,6 +46,7 @@ decoded_data = decode_monero_payment_request(monero_payment_request)
 print(decoded_data)
 ```
 
+
 ## Encoding A Monero Payment Request
 To encode a Monero Payment Request, follow these steps:
 
@@ -54,7 +55,7 @@ To encode a Monero Payment Request, follow these steps:
 3. Encode the compressed data in Base64 format.
 4. Add the Monero Payment Request identifier `monero-request:` and version number `1:` to the encoded string.
 
-## Example Python Function To Create A Monero Payment Request
+### Example Python Function To Create A Monero Payment Request
 ```
 import base64
 import gzip
@@ -93,6 +94,7 @@ monero_payment_request = make_monero_payment_request(json_data=json_data)
 
 print(monero_payment_request)
 ```
+
 
 ## Using the Optional `change_indicator_url`
 The `change_indicator_url` is an optional field designed for merchants who wish to have the flexibility to request modifications to an existing payment request. **It's important to note that the merchant cannot enforce these changes.** When a change is requested, all related automatic payments are paused until the customer reviews and either confirms or rejects the changes.
