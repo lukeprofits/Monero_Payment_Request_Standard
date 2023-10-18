@@ -49,10 +49,21 @@ print(decoded_data)
 # Encoding A Monero Payment Request
 To encode a Monero Payment Request, follow these steps:
 
-1. Convert the payment details to a JSON object (add the arguements `separators=(',', ':')` and `sort_keys=True)`.
-2. Compress the JSON object using gzip compression (add the arguemnt `mtime=0`).
+1. Convert the payment details to a JSON object. Minimize whitespace and sort the keys.
+   - Python: `json.dumps(data, separators=(',', ':'), sort_keys=True)`
+   - JavaScript: `JSON.stringify(data, Object.keys(data).sort())`
+   
+2. Compress the JSON object using gzip compression. Set the modification time to a constant value to ensure consistency.
+   - Python: `gzip.compress(data, mtime=0)`
+   - JavaScript: `pako.gzip(data, {mtime: 0})`  *(using pako library)*
+
 3. Encode the compressed data in Base64 format.
+   - Python: `base64.b64encode(data).decode('ascii')`
+   - JavaScript: `btoa(String.fromCharCode.apply(null, new Uint8Array(data)))`
+
 4. Add the Monero Payment Request identifier `monero-request:` and version number `1:` to the encoded string.
+   - Python/JavaScript: `'monero-request:1:' + encodedString`
+
 
 ## Example Python Function To Create A Monero Payment Request:
 ```
