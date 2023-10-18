@@ -2,14 +2,12 @@
 > Formerly the [Monero Subscription Code Standard](https://github.com/lukeprofits/Monero_Subscription_Code_Standard)
 
 # Tools For Creating `monero-request` codes 
-(these will be updated soon)
-
 - [Monero Payment Request Code Creator Website](https://monerosub.tux.pizza/)
 - [Monero Payment Request Code Creator CLI Tool](https://github.com/lukeprofits/Monero_Payment_Request_Code_Creator)
 - [Monero Payment Request Code Creator Pip Package](https://github.com/lukeprofits/monero_payment_request)
 - More `monero-request` integration tools coming soon...
 
-# Current Version: [Version 1](https://github.com/lukeprofits/Monero_Payment_Request_Standard/blob/main/versions/v1.md)
+# Latest Version: [Version 1](https://github.com/lukeprofits/Monero_Payment_Request_Standard/blob/main/versions/v1.md)
 ## Decoding & Encoding Monero Payment Requests 
 This document explains how to decode and encode `monero-request:` payment requests using gzip compression and Base64 encoding.
 
