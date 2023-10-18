@@ -1,7 +1,8 @@
 # Monero Payment Request Standard
 > Formerly the [Monero Subscription Code Standard](https://github.com/lukeprofits/Monero_Subscription_Code_Standard)
 
-# Tools For Creating `monero-request` codes (these will be updated soon)
+# Tools For Creating `monero-request` codes 
+(these will be updated soon)
 
 - [Monero Payment Request Code Creator Website](https://monerosub.tux.pizza/)
 - [Monero Payment Request Code Creator CLI Tool](https://github.com/lukeprofits/Monero_Payment_Request_Code_Creator)
