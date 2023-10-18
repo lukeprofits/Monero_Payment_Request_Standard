@@ -31,8 +31,7 @@ To simplify all kinds of payments on Monero, allowing buyers to retain full cont
 - More `monero-request` integration tools coming soon...
 
 # Latest Version: [Version 1](https://github.com/lukeprofits/Monero_Payment_Request_Standard/blob/main/versions/v1.md)
-## Decoding & Encoding Monero Payment Requests 
-This document explains how to decode and encode `monero-request:` payment requests using gzip compression and Base64 encoding.
+The following explains how to decode and encode `monero-request:` payment requests using gzip compression and Base64 encoding.
 
 # Decoding A Monero Payment Request
 To decode a Monero Payment Request, follow these steps:
