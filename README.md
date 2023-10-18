@@ -3,7 +3,7 @@
 
 # Version 1:
 ## Decoding & Encoding Monero Payment Requests 
-This document explains how to decode and encode `monero-request:` payment requests.
+This document explains how to decode and encode `monero-request:` payment requests using gzip compression and Base64 encoding.
 
 ## Decoding A Monero Payment Request
 To decode a Monero Payment Request, follow these steps:
@@ -25,12 +25,12 @@ import json
 ## Encoding A Monero Payment Request
 To encode a Monero Payment Request, follow these steps:
 
-1. Convert the payment details to a JSON object.
-2. Compress the JSON object using gzip compression.
+1. Convert the payment details to a JSON object (add the arguements `separators=(',', ':')` and `sort_keys=True)`.
+2. Compress the JSON object using gzip compression (add the arguemnt `mtime=0`).
 3. Encode the compressed data in Base64 format.
 4. Add the Monero Payment Request identifier `monero-request:` and version number `1:` to the encoded string.
 
-## Example Python Function To Encode A Monero Payment Request
+## Example Python Function To Create A Monero Payment Request
 ```
 import base64
 import gzip
@@ -39,7 +39,7 @@ import json
 ```
 
 ## Using the Optional `change_indicator_url`
-The `change_indicator_url` is an optional field designed for merchants who wish to have the flexibility to request modifications to an existing payment request. This could be a one-time payment, a payment with a set number, or a recurring subscription. **It's important to note that the merchant cannot enforce these changes unilaterally.** When a change is requested, all related automatic payments are paused until the customer reviews and either confirms or rejects the changes.
+The `change_indicator_url` is an optional field designed for merchants who wish to have the flexibility to request modifications to an existing payment request. **It's important to note that the merchant cannot enforce these changes.** When a change is requested, all related automatic payments are paused until the customer reviews and either confirms or rejects the changes.
 
 #### Key Features and Constraints
 
@@ -47,7 +47,7 @@ The `change_indicator_url` is an optional field designed for merchants who wish 
   
 - **Automatic Pause on Changes**: The wallet will query the `change_indicator_url` before any scheduled payment. If it detects a change, automatic payments are paused and the customer is notified.
 
-- **Customer Consent Required**: Payments remain paused until the customer actively confirms or rejects the proposed changes. If confirmed, payments resume; if rejected, the payment schedule is canceled.
+- **Customer Consent Required**: Payments remain paused until the customer actively confirms or rejects the proposed changes. If confirmed, the payment request is updated and payments resume; if rejected, the payment request is canceled.
 
 #### How it Works
 
@@ -56,7 +56,7 @@ The `change_indicator_url` is an optional field designed for merchants who wish 
 
 2. **Merchant Changes**: To request a change, the merchant updates the information at the `change_indicator_url`. These changes remain in the status of "requested" until approved or declined by the customer.
 
-3. **Customer Notification and Confirmation**: Upon detecting a change, the wallet notifies the customer who then must make a decision to accept or decline. Payments stay paused until this decision is made.
+3. **Customer Notification and Confirmation**: Upon detecting a change, the wallet notifies the customer who then must make a decision to accept the changes to the payment request, or cancel the payment request. Payments stay paused until this decision is made.
 
 #### Merchant Guidelines
 
@@ -80,13 +80,13 @@ Merchants can send JSON data with the following fields to initiate different typ
     }
     ```
 
-- **To Update Payment Fields**
+- **To Update Any Payment Request Fields**
     ```json
     {
         "action": "update",
         "fields": {
             "amount": 25.99,
-            "currency": "XMR"
+            "currency": "USD"
         },
         "note": "Price has changed due to increased costs."
     }
