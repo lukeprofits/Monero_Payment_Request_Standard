@@ -1,6 +1,29 @@
 # Monero Payment Request Standard
 > Formerly known as the [Monero Subscription Code Standard](https://github.com/lukeprofits/Monero_Subscription_Code_Standard)
 
+## Introduction
+The Monero Payment Request Standard aims to address the complexities and limitations associated with traditional and existing cryptographic payment methods. It facilitates a straightforward and decentralized way to handle both one-time and recurring Monero payments.
+
+## Operational Mechanism
+
+### For Merchants
+1. **Generate A Code**: Create a unique payment code (called a "Payment Request") encapsulating the payment information — billing frequency, amount, etc.
+2. **Modification Requests**: Merchants can request to update previously sent Payment Requests, accommodating changing business needs. The customer retains the ability to accept these changes, or remove the Payment Request.
+
+### For Consumers
+1. **Input The Code**: Insert the merchant-provided Payment Request into your Monero wallet, review the Payment Request details, and click to confirm.
+2. **Retain Control**: Upon confirmation, the payment proceeds according to the agreed-upon schedule. Buyers retain full control over their funds and can cancel Payment Requests at any time.
+
+## Advantages
+
+- **Efficiency**: The protocol eliminates redundant steps, enabling users to establish payment conditions with a singular code.
+- **No Intermediaries**: The protocol operates without the need for a middle man, enabling a direct transactional relationship between the buyer and merchant.
+- **Multi-Currency Flexibility**: The protocol supports pricing in various currencies, providing flexibility for merchants whose pricing may be based on fiat currencies.
+- **Privacy Preserving**: Merchants can confirm the origin of payments without collecting any information from the buyer.
+
+## Mission
+To simplify all kinds of payments on Monero, allowing buyers to retain full control of funds, automate payments, and keep transactions private.
+
 # Tools For Creating `monero-request` codes 
 - [Monero Payment Request Code Creator Website](https://monerosub.tux.pizza/)
 - [Monero Payment Request Code Creator CLI Tool](https://github.com/lukeprofits/Monero_Payment_Request_Code_Creator)
