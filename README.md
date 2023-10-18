@@ -36,6 +36,38 @@ import base64
 import gzip
 import json
 
+
+def make_monero_payment_request(json_data, version=1):
+    # Convert the JSON data to a string
+    json_str = json.dumps(json_data, separators=(',', ':'), sort_keys=True)
+
+    # Compress the string using gzip compression
+    compressed_data = gzip.compress(json_str.encode('utf-8'), mtime=0)
+
+    # Encode the compressed data into a Base64-encoded string
+    encoded_str = base64.b64encode(compressed_data).decode('ascii')
+
+    # Add the Monero Subscription identifier & version number
+    monero_payment_request = 'monero-request:' + str(version) + ':' + encoded_str
+
+    return monero_payment_request
+
+
+json_data = {
+    "custom_label": "My Subscription",  # This can be any text
+    "sellers_wallet": "4At3X5rvVypTofgmueN9s9QtrzdRe5BueFrskAZi17BoYbhzysozzoMFB6zWnTKdGC6AxEAbEE5czFR3hbEEJbsm4hCeX2S",
+    "currency": "USD",  # Currently supports "USD" or "XMR"
+    "amount": 19.99,
+    "payment_id": "9fc88080d1d5dc09",  # Unique identifier so the merchant knows which customer the payment relates to
+    "start_date": "2023-04-26T13:45:33Z",  # Start date in RFC3339 timestamp format
+    "days_per_billing_cycle": 30,  # How often it should be billed
+    "number_of_payments": 0,  # 1 for one-time, >1 for set-number, 0 for recurring until canceled
+    "change_indicator_url": "www.example.com/api/monero-request",  # Optional. Small merchants should leave this blank.
+}
+
+monero_payment_request = make_monero_payment_request(json_data=json_data)
+
+print(monero_payment_request)
 ```
 
 ## Using the Optional `change_indicator_url`
