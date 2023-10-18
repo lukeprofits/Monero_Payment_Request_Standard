@@ -25,7 +25,7 @@
 8. [Old Versions](#old-versions)
 
 ## Introduction
-The Monero Payment Request Standard aims to address the complexities and limitations associated with traditional and existing cryptographic payment methods. It facilitates a straightforward and decentralized way to handle both one-time and recurring Monero payments.
+The Monero Payment Request Standard aims to address the complexities and limitations associated with traditional and existing cryptographic payment methods. It facilitates a straightforward and decentralized way to handle one-time, recurring, and scheduled Monero payments.
 
 ## How It Works
 ### For Merchants
