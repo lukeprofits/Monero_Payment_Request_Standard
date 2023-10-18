@@ -33,7 +33,7 @@ To simplify all kinds of payments on Monero, allowing buyers to retain full cont
 # Latest Version: [Version 1](https://github.com/lukeprofits/Monero_Payment_Request_Standard/blob/main/versions/v1.md)
 The following explains how to decode and encode `monero-request:` payment requests using gzip compression and Base64 encoding.
 
-# Decoding A Monero Payment Request
+## Decoding A Monero Payment Request
 To decode a Monero Payment Request, follow these steps:
 
 1. Remove the Monero Payment Request identifier: `monero-request:` and version identifier `1:`.
@@ -41,7 +41,7 @@ To decode a Monero Payment Request, follow these steps:
 3. Decompress the compressed data using gzip to get the JSON string.
 4. Parse the JSON string to extract the field values.
 
-## Example Python Function To Decode A Monero Payment Request:
+### Example Python Function To Decode A Monero Payment Request:
 ```
 import base64
 import gzip
@@ -74,7 +74,7 @@ print(decoded_data)
 ```
 
 
-# Encoding A Monero Payment Request
+## Encoding A Monero Payment Request
 To encode a Monero Payment Request, follow these steps:
 
 1. Convert the payment details to a JSON object. Minimize whitespace and sort the keys.
@@ -93,7 +93,7 @@ To encode a Monero Payment Request, follow these steps:
    - Python/JavaScript: `'monero-request:1:' + encodedString`
 
 
-## Example Python Function To Create A Monero Payment Request:
+### Example Python Function To Create A Monero Payment Request:
 ```
 import base64
 import gzip
@@ -134,7 +134,7 @@ print(monero_payment_request)
 ```
 
 
-# Using the Optional `change_indicator_url`
+## Using the Optional `change_indicator_url`
 The `change_indicator_url` is an optional field designed for merchants who wish to have the flexibility to request modifications to an existing payment request. **It's important to note that the merchant cannot enforce these changes.** When a change is requested, all related automatic payments are paused until the customer reviews and either confirms or rejects the changes.
 
 #### Key Features and Constraints
