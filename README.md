@@ -14,7 +14,7 @@ To decode a Monero Payment Request, follow these steps:
 4. Decompress the compressed data using gzip to get the JSON string.
 5. Parse the JSON string to extract the field values.
 
-### Example Python Function To Decode A Monero Payment Request
+### Example Python Function To Decode A Monero Payment Request:
 ```
 import base64
 import gzip
@@ -55,7 +55,7 @@ To encode a Monero Payment Request, follow these steps:
 3. Encode the compressed data in Base64 format.
 4. Add the Monero Payment Request identifier `monero-request:` and version number `1:` to the encoded string.
 
-### Example Python Function To Create A Monero Payment Request
+### Example Python Function To Create A Monero Payment Request:
 ```
 import base64
 import gzip
