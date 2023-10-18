@@ -172,7 +172,7 @@ The `custom_label` is a string field allowing users to attach a descriptive labe
 - **Examples**: 
     - "Monthly Subscription"
     - "Donation to XYZ"
-    - "Invoice #12345"
+    - "Invoice #12345" *(For one-time payments)*
 
 ### Sellers Wallet
 The `sellers_wallet` field holds the Monero wallet address where payments will be sent. This address must not be a subaddress since integrated addresses (which combine a Monero address and a payment ID) don't support subaddresses.
