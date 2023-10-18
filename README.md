@@ -20,18 +20,6 @@ import base64
 import gzip
 import json
 
-def decode_monero_payment_request(monero_payment_request):
-    code_parts = monero_payment_request.split('monero-request:')
-    if len(code_parts) == 2:
-        monero_request_data = code_parts[1]
-    else:
-        monero_request_data = code_parts[0]
-    encoded_str = monero_request_data
-    compressed_data = base64.b64decode(encoded_str.encode('ascii'))
-    json_bytes = gzip.decompress(compressed_data)
-    json_str = json_bytes.decode('utf-8')
-    request_data_as_json = json.loads(json_str)
-    return request_data_as_json
 ```
 
 ## Encoding A Monero Payment Request
@@ -48,12 +36,6 @@ import base64
 import gzip
 import json
 
-def make_monero_payment_request(json_data, version=1):
-    json_str = json.dumps(json_data, separators=(',', ':'), sort_keys=True)
-    compressed_data = gzip.compress(json_str.encode('utf-8'), mtime=0)
-    encoded_str = base64.b64encode(compressed_data).decode('ascii')
-    monero_payment_request = 'monero-request:' + f'{str(version)}:' + encoded_str
-    return monero_payment_request
 ```
 
 ## Using the Optional `change_indicator_url`
