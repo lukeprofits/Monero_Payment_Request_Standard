@@ -197,13 +197,13 @@ The `amount` field specifies the quantity of the specified currency to be transf
 
 - **Data Type**: Float
 - **Examples**: 
-    - 19.99 (for 19.99 USD worth of Monero)
-    - 0.5 (for 0.5 XMR)
+    - 19.99 *(for 19.99 USD worth of Monero — assuming Currency was set to USD)*
+    - 0.5 *(for 0.5 XMR  — assuming Currency was set to XMR)*
 
 ### Payment ID
 The `payment_id` is a unique identifier generated for the payment request. It is used when generating an integrated address for Monero payments. Merchants can identify which customer made a payment based on this ID, ensuring privacy for the customer.
 
-- **Data Type**: String (Monero payment ID format)
+- **Data Type**: String *(Monero payment ID format)*
 - **Details**: Typically in hexadecimal format, it's recommended to generate a unique ID for each customer.
 - **Examples**: 
     - "9fc88080d1d5dc09"
@@ -229,20 +229,25 @@ The `days_per_billing_cycle` field defines the frequency of payments for recurri
 
 - **Data Type**: Integer
 - **Examples**: 
-    - 30 (for monthly payments)
-    - 7 (for weekly payments)
+    - 30 *(for monthly payments)*
+    - 7 *(for weekly payments)*
 
 ### Number of Payments
 The `number_of_payments` field indicates how many times a payment will occur.
 
 - **Data Type**: Integer
 - **Examples**: 
-    - 1 (for a one-time payment)
-    - 6 (for six scheduled payments)
-    - 0 (for payments that will recur until canceled)
+    - 1 *(for a one-time payment)*
+    - 6 *(for six scheduled payments)*
+    - 0 *(for payments that will recur until canceled)*
 
 ### Change Indicator URL
 The `change_indicator_url` is an optional field designed for merchants who wish to have the flexibility to request modifications to an existing payment request. **It's important to note that the merchant cannot enforce these changes.** When a change is requested, all related automatic payments are paused until the customer reviews and either confirms or rejects the changes (canceling the payment request).
+
+- **Data Type**: String
+- **Examples**: 
+    - "www.example.com/api/monero-request"
+    - "www.mywebsite.com/update-monero-payments"
 
 #### Key Features and Constraints
 
