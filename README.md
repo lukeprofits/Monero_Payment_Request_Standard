@@ -20,6 +20,30 @@ import base64
 import gzip
 import json
 
+def decode_monero_payment_request(monero_payment_request):
+    # Extract prefix, version, and Base64-encoded data
+    prefix, version, encoded_str = monero_payment_request.split(':')
+
+    # Decode the Base64-encoded string to bytes
+    encoded_str = base64.b64decode(encoded_str.encode('ascii'))
+
+    # Decompress the bytes using gzip decompression
+    decompressed_data = gzip.decompress(encoded_str)
+
+    # Convert the decompressed bytes into to a JSON string
+    json_str = decompressed_data.decode('utf-8')
+
+    # Parse the JSON string into a Python object
+    monero_payment_request_data = json.loads(json_str)
+
+    return monero_payment_request_data
+
+
+monero_payment_request = 'monero-request:1:H4sIAAAAAAAC/y2P207DMAyGXwXleocex9q7bmxIoCGxDRi7idLEWyNyKDnQtYh3J0Nc2f79+7P9jYjUXjlUxsWkKEaINkSdAXPFOCVOG+yNQCXqum4CFyJbAROq5ZS0fCq1AqPHBj49WIfCrDcGFO2D/2V39ydYpyUWpIYrZNPf7HxtqeGt41oFAyO9xS0YXHMhuDpj2lMBqEyjEVJe1qGjT7glvQTlLCqD/F9gzgKxONH5PJpHLGY5o1ERkBaEAGNxR0IMf6GscukhN1+vfbvXp7P08FTY4tmZgW0hX3hYG/tRHXl8u9DvdTP0Vg+D3qwXs+FN7R/Z/XJWXVZVvVrldFhv0yZkD7WVWbOEQ7K7rnTEOMyIC5ejJErScZSNk9k+TsssL9P0iH5+AS8IcFpoAQAA'
+
+decoded_data = decode_monero_payment_request(monero_payment_request)
+
+print(decoded_data)
 ```
 
 ## Encoding A Monero Payment Request
