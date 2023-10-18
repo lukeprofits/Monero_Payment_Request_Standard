@@ -197,8 +197,8 @@ The `amount` field specifies the quantity of the specified currency to be transf
 
 - **Data Type**: Float
 - **Examples**: 
-    - 19.99 *(for 19.99 USD worth of Monero — assuming Currency was set to USD)*
-    - 0.5 *(for 0.5 XMR  — assuming Currency was set to XMR)*
+    - 19.99 *(for 19.99 USD worth of Monero — assuming "Currency" was set to USD)*
+    - 0.5 *(for 0.5 XMR  — assuming "Currency" was set to XMR)*
 
 ### Payment ID
 The `payment_id` is a unique identifier generated for the payment request. It is used when generating an integrated address for Monero payments. Merchants can identify which customer made a payment based on this ID, ensuring privacy for the customer.
