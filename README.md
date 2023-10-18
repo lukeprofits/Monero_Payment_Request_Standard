@@ -105,6 +105,68 @@ print(monero_subscription_code)
 
 ```
 
+### Monero Payment Request Protocol: Using the Optional `change_indicator_url`
+
+The `change_indicator_url` is an optional field designed for merchants who wish to have the flexibility to request modifications to an existing payment request. This could be a one-time payment, a payment with a set number, or a recurring subscription. **It's important to note that the merchant cannot enforce these changes unilaterally.** When a change is requested, all related automatic payments are paused until the customer reviews and either confirms or rejects the changes.
+
+#### Key Features and Constraints
+
+- **Merchant Requests, Not Commands**: The main utility of this feature is for merchants to request changes, such as updating a wallet address or changing the price. The merchant cannot force these changes on the customer.
+  
+- **Automatic Pause on Changes**: The wallet will query the `change_indicator_url` before any scheduled payment. If it detects a change, automatic payments are paused and the customer is notified.
+
+- **Customer Consent Required**: Payments remain paused until the customer actively confirms or rejects the proposed changes. If confirmed, payments resume; if rejected, the payment schedule is canceled.
+
+#### How it Works
+
+1. **URL Formation**: The `change_indicator_url` is constructed by appending the unique `payment_id` to a base URL specified by the merchant.
+    - Example: `www.mysite.com/api/monero-request?payment_id=9fc88080d1d5dc09`
+
+2. **Merchant Changes**: To request a change, the merchant updates the information at the `change_indicator_url`. These changes remain in the status of "requested" until approved or declined by the customer.
+
+3. **Customer Notification and Confirmation**: Upon detecting a change, the wallet notifies the customer who then must make a decision to accept or decline. Payments stay paused until this decision is made.
+
+#### Merchant Guidelines
+
+- **Endpoint Setup**: Merchants should create a REST endpoint capable of handling GET requests for the `change_indicator_url`.
+  
+- **Initiating Changes**: To request changes, the merchant updates the content at the REST endpoint according to the Monero Payment Request Protocol format.
+
+- **Cancellation Request**: If a merchant wishes to cancel the payment request entirely, they can specify this at the `change_indicator_url` (e.g., `"status": "cancelled"`).
+
+- **Supplemental Customer Notification**: Though the `change_indicator_url` should trigger automatic notifications, merchants are encouraged to also notify customers through other channels as a best practice.
+
+#### JSON Structure for Merchant Changes
+
+Merchants can send JSON data with the following fields to initiate different types of changes:
+
+- **To Cancel Subscription**
+    ```json
+    {
+        "action": "cancel",
+        "note": "We are going out of business."
+    }
+    ```
+
+- **To Update Payment Fields**
+    ```json
+    {
+        "action": "update",
+        "fields": {
+            "amount": 25.99,
+            "currency": "XMR"
+        },
+        "note": "Price has changed due to increased costs."
+    }
+    ```
+
+#### Bulk Updates
+
+Merchants can ignore the `payment_id` query parameter to initiate blanket updates for all payment_ids associated with the `change_indicator_url`.
+
+This optional `change_indicator_url` feature enhances the protocol's flexibility, enabling merchants to request changes while ensuring customers maintain full control over their payment options.
+
+
 # Tools For Creating `monero-request` codes:
 * Recommended: [Monero Subscription Code Creator Website](https://monerosub.tux.pizza/)
 * [Monero Subscription Code Creator CLI Tool](https://github.com/lukeprofits/Monero_Subscription_Code_Creator)
