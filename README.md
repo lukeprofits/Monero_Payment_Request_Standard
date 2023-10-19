@@ -248,15 +248,15 @@ The `change_indicator_url` is a field designed for large merchants who wish to h
 
 - **Merchant Requests, Not Commands**: The main utility of this feature is for merchants to request changes, such as updating a wallet address or changing the price. The merchant cannot force these changes on the customer.
   
-- **Automatic Pause on Changes**: The wallet will query the `change_indicator_url` before any scheduled payment. If it detects a change, automatic payments are paused and the customer is notified.
+- **Automatic Pause on Changes**: The wallet will query the `change_indicator_url` before making any payment. If it detects a change, automatic payments are paused and the customer is notified of the requested change (customer can choose to accept the changes, or cancel the payment request).
 
 - **Customer Consent Required**: Payments remain paused until the customer actively confirms or rejects the proposed changes. If confirmed, the payment request is updated and payments resume; if rejected, the payment request is canceled.
 
 #### How it Works
 
-1. **URL Formation**: For the `change_indicator_url`, provide only the base URL of the endpoint that should be notified upon payment status changes. The system will automatically append the unique `payment_id` associated with the payment request as a query parameter to this URL.
+1. **URL Formation**: For the `change_indicator_url`, provide only the base URL of the endpoint that can be checked for a Payment Request changes. The system will automatically append the unique `payment_id` associated with the payment request as a query parameter to this URL.
     - Base URL you provide: `www.mysite.com/api/monero-request`
-    - Final URL used by the system: `www.mysite.com/api/monero-request?payment_id=9fc88080d1d5dc09`
+    - Final URL the customer will query: `www.mysite.com/api/monero-request?payment_id=9fc88080d1d5dc09`
 
 2. **Merchant Changes**: To request a change, the merchant updates the information at the `change_indicator_url`. These changes remain in the status of "requested" until approved or declined by the customer.
 
