@@ -73,7 +73,7 @@ To decode a Monero Payment Request, follow these steps:
 
 
 ### Example Python Function To Decode A Monero Payment Request:
-```
+```python
 import base64
 import gzip
 import json
@@ -124,7 +124,7 @@ To encode a Monero Payment Request, follow these steps:
 
 
 ### Example Python Function To Create A Monero Payment Request:
-```
+```python
 import base64
 import gzip
 import json
@@ -212,12 +212,12 @@ The `payment_id` is a unique identifier generated for the payment request. It is
 The `start_date` field indicates when the first payment or subscription should commence.
 
 - **Data Type**: String *(RFC3339 timestamp format)*
-- **Python Example**: 
+- **Python**: 
     ```python
     from datetime import datetime
     current_time = datetime.now().isoformat(timespec='milliseconds')
     ```
-- **JavaScript Example**:
+- **JavaScript**:
     ```javascript
     const current_time = new Date().toISOString();
     ```
