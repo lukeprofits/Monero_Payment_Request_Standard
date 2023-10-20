@@ -150,7 +150,7 @@ json_data = {
     "custom_label": "My Subscription",  # This can be any text
     "sellers_wallet": "4At3X5rvVypTofgmueN9s9QtrzdRe5BueFrskAZi17BoYbhzysozzoMFB6zWnTKdGC6AxEAbEE5czFR3hbEEJbsm4hCeX2S",
     "currency": "USD",  # Currently supports "USD" or "XMR"
-    "amount": 19.99,
+    "amount": "19.99",
     "payment_id": "9fc88080d1d5dc09",  # Unique identifier so the merchant knows which customer the payment relates to
     "start_date": "2023-04-26T13:45:33Z",  # Start date in RFC3339 timestamp format
     "days_per_billing_cycle": 30,  # How often it should be billed
