@@ -113,7 +113,7 @@ To encode a Monero Payment Request, follow these steps:
    
 2. Compress the JSON object using gzip compression. Set the modification time to a constant value to ensure consistency.
    - Python: `gzip.compress(data, mtime=0)`
-   - JavaScript: `pako.gzip(data, {mtime: 0})`  *(using pako library)*
+   - JavaScript: `pako.gzip(data, { level: 9, windowBits: 31 })`  *(using pako library)*
 
 3. Encode the compressed data in Base64 format.
    - Python: `base64.b64encode(data).decode('ascii')`
