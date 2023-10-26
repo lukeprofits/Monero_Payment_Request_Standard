@@ -289,7 +289,7 @@ Merchants can send JSON data with the following fields to initiate different typ
     {
         "action": "update",
         "fields": {
-            "amount": 25.99,
+            "amount": "25.99",
             "currency": "USD"
         },
         "note": "Price has changed due to increased costs."
