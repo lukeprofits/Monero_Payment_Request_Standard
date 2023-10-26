@@ -214,12 +214,12 @@ The `start_date` field indicates when the first payment or subscription should c
 - **Data Type**: String *(RFC3339 timestamp format)*
 - **Python**: 
     ```python
-    from datetime import datetime
-    current_time = datetime.now().isoformat(timespec='milliseconds')
+    from datetime import datetime, timezone
+    current_time = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z'
     ```
 - **JavaScript**:
     ```javascript
-    const current_time = new Date().toISOString();
+    const current_time = new Date().toISOString().slice(0, -1) + 'Z';
     ```
 - **Examples**: 
     - "2023-04-26T13:45:33.123Z"
