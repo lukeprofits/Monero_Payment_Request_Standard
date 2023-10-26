@@ -305,8 +305,8 @@ This optional `change_indicator_url` feature enhances the protocol's flexibility
 - **Data Type**: String
 - **Examples**:
     - "" *(for small merchants who do not want to use this feature)*
-    - "www.example.com/api/monero-request"
-    - "www.mywebsite.com/update-monero-payments"
+    - "https://www.example.com/api/monero-request"
+    - "https://mywebsite.com/update-monero-payments"
 
 ## Old Versions
 [Version 0](https://github.com/lukeprofits/Monero_Payment_Request_Standard/blob/main/versions/v0.md)
