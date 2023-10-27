@@ -211,7 +211,7 @@ The `payment_id` is a unique identifier generated for the payment request. It is
 ### Start Date
 The `start_date` field indicates when the first payment or subscription should commence.
 
-- **Data Type**: String *(RFC3339 timestamp format)*
+- **Data Type**: String *(truncated RFC3339 timestamp format)*
 - **Python**: 
     ```python
     from datetime import datetime, timezone
@@ -223,6 +223,7 @@ The `start_date` field indicates when the first payment or subscription should c
     ```
 - **Examples**: 
     - "2023-04-26T13:45:33.123Z"
+    - "2023-10-26T04:55:37.443Z"
 
 ### Days Per Billing Cycle
 The `days_per_billing_cycle` field defines the frequency of payments for recurring payments.
