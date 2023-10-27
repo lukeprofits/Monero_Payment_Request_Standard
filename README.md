@@ -222,8 +222,8 @@ The `start_date` field indicates when the first payment or subscription should c
     const current_time = new Date().toISOString().slice(0, -1) + 'Z';
     ```
 - **Examples**: 
-    - "2023-04-26T13:45:33.123Z"
-    - "2023-10-26T04:55:37.443Z"
+    - 2023-04-26T13:45:33.123Z
+    - 2023-10-26T04:55:37.443Z
 
 ### Days Per Billing Cycle
 The `days_per_billing_cycle` field defines the frequency of payments for recurring payments.
