@@ -5,7 +5,7 @@
 
 This standard has been implemented in several programming languages to facilitate its use across different platforms and applications. Here are the available libraries:
 
-- Python: [monerorequest](https://github.com/lukeprofits/monerorequest) `pip install monerorequest` (available on PyPI)
+- Python: [monerorequest](https://github.com/lukeprofits/monerorequest) `pip install monerorequest`
 - JavaScript: [monerorequest-js](https://github.com/moshmage/monerorequest-js) (coming soon to npm)
 - Kotlin: [monerorequest-kotlin](https://github.com/lukeprofits/monerorequest-kotlin) (coming soon to Maven Central)
 
