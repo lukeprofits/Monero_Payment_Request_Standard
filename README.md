@@ -1,6 +1,14 @@
 # Monero Payment Request Standard
 > Formerly known as the [Monero Subscription Code Standard](https://github.com/lukeprofits/Monero_Subscription_Code_Standard)
 
+## Implementations
+
+This standard has been implemented in several programming languages to facilitate its use across different platforms and applications. Here are the available libraries:
+
+- Python: `pip install monerorequest` [monerorequest](https://github.com/lukeprofits/monerorequest) (available on PyPI)
+- JavaScript: [monerorequest-js](https://github.com/moshmage/monerorequest-js) (coming soon to npm)
+- Kotlin: [monerorequest-kotlin](https://github.com/lukeprofits/monerorequest-kotlin) (coming soon to Maven Central)
+
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [How It Works](#how-it-works)
