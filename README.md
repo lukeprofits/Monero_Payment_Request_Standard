@@ -8,6 +8,7 @@ This standard has been implemented in several programming languages to facilitat
 - Python: [monerorequest](https://github.com/lukeprofits/monerorequest) `pip install monerorequest`
 - JavaScript: [monerorequest-js](https://github.com/moshmage/monerorequest-js) `npm install -S monerorequest-js`
 - Kotlin: [monerorequest-kotlin](https://github.com/lukeprofits/monerorequest-kotlin) (coming soon to Maven Central)
+- Java: [monerorequest-java](https://github.com/lukeprofits/monerorequest-java) (coming soon to Maven Central)
 
 ## Table of Contents
 1. [Introduction](#introduction)
