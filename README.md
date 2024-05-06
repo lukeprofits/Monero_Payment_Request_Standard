@@ -9,6 +9,9 @@ This standard has been implemented in several programming languages to facilitat
 - JavaScript: [monerorequest-js](https://github.com/moshmage/monerorequest-js) `npm install -S monerorequest-js`
 - Kotlin: [monerorequest-kotlin](https://github.com/lukeprofits/monerorequest-kotlin) (coming soon to Maven Central)
 - Java: [monerorequest-java](https://github.com/lukeprofits/monerorequest-java) (coming soon to Maven Central)
+- Ruby: [monerorequest-ruby](https://github.com/snex/monerorequest-ruby) (in progress)
+- Rust: [monerorequest-rust](https://github.com/NotGovernor/MoneroRequest-Rust) (in progress)
+
 
 ## Table of Contents
 1. [Introduction](#introduction)
