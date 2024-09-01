@@ -64,7 +64,7 @@ To simplify all kinds of payments on Monero, allowing buyers to retain full cont
 - More `monero-request` integration tools coming soon...
 
 ## Latest Version
-[Version 1](https://github.com/lukeprofits/Monero_Payment_Request_Standard/blob/main/versions/v1.md)
+[Version 2](https://github.com/lukeprofits/Monero_Payment_Request_Standard/blob/main/versions/v2.md)
 
 ### Decoding A Monero Payment Request
 To decode a Monero Payment Request, follow these steps:
