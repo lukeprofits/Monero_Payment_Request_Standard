@@ -239,24 +239,26 @@ The `start_date` field indicates when the first payment or subscription should c
 
 ### Schedule
 The `schedule` field defines the frequency of payments for recurring payments using a cron-style syntax.
-Minute (\*, 0-59) Hour (\*, 0-23) Day Of Month (\*, 1-31) Month (\*, 1-12) Day of Week (\*, 0-7).
-https://man7.org/linux/man-pages/man5/crontab.5.html Being the main reference for what should be supported.
-With the added symbol of `L` for the Day of Month entry to represent the last day of the month.
+Minute (`*`, 0-59), Hour (`*`, 0-23), Day Of Month (`*`, 1-31), Month (`*`, 1-12), Day of Week (`*`, 0-7).
+See [crontab(5)](https://man7.org/linux/man-pages/man5/crontab.5.html) for the main reference on supported syntax.
+The symbol `L` is also supported for the Day of Month entry to represent the last day of the month.
 
 - **Data Type**: String
 - **Examples**:
-    - * * * * * *For payments every minute*
-    - * * * * 0 *For weekly payments*
+    ```plaintext
+    * * * * *    # For payments every minute
+    * * * * 0    # For weekly payments
+    ```
 
 ### Number of Payments
 The `number_of_payments` field indicates how many times a payment will occur.
 
 - **Data Type**: Integer
-- **Examples**: 
-    - 1 *(for a one-time payment)*
-    - 6 *(for six scheduled payments)*
-    - 0 *(for payments that will recur until canceled)*
-
+- **Examples**:
+    - `1` (for a one-time payment)
+    - `6` (for six scheduled payments)
+    - `0` (for payments that will recur until canceled)
+      
 ### Change Indicator URL
 The `change_indicator_url` is a field designed for large merchants who wish to have the flexibility to request modifications to an existing payment request. **It's important to note that the merchant cannot enforce these changes.** When a change is requested, all related automatic payments are paused until the customer reviews and either confirms or rejects the changes (canceling the payment request).
 
