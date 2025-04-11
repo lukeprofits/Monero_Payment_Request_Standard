@@ -239,7 +239,9 @@ The `start_date` field indicates when the first payment or subscription should c
 
 ### Schedule
 The `schedule` field defines the frequency of payments for recurring payments using a cron-style syntax.
+
 Minute (`*`, 0-59), Hour (`*`, 0-23), Day Of Month (`*`, 1-31), Month (`*`, 1-12), Day of Week (`*`, 0-7).
+
 See [crontab(5)](https://man7.org/linux/man-pages/man5/crontab.5.html) for the main reference on supported syntax.
 The symbol `L` is also supported for the Day of Month entry to represent the last day of the month.
 
