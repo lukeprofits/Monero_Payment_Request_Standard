@@ -31,7 +31,7 @@ This standard has been implemented in several programming languages to facilitat
     4. [Amount](#amount)
     5. [Payment ID](#payment-id)
     6. [Start Date](#start-date)
-    7. [Days Per Billing Cycle](#days-per-billing-cycle)
+    7. [Schedule](#schedule)
     8. [Number of Payments](#number-of-payments)
     9. [Change Indicator URL](#change-indicator-url)
 8. [Old Versions](#old-versions)
